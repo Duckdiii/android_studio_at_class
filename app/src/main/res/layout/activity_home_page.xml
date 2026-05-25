@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FDFDFD"
+    tools:context=".home_page">
+
+    <!-- 1. Top Header Background (Tạo dải màu đỏ phía trên) -->
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="#D32F2F"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 2. Title TechStore -->
+    <TextView
+        android:id="@+id/tvHomePageTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="TechStore"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 3. Nút Cart (Trắng nổi trên nền đỏ) -->
+    <ImageButton
+        android:id="@+id/btnCart"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Cart"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_shopping_cart"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHomePageTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvHomePageTitle"
+        app:tint="@color/white" />
+
+    <!-- 4. Thanh Search Material Design -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/searchCard"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toStartOf="@+id/btnFilter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomePageTitle">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:iconifiedByDefault="false"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Tìm kiếm sản phẩm..." />
+    </androidx.cardview.widget.CardView>
+
+    <!-- 5. Nút Filter (Màu trắng trên nền đỏ) -->
+    <ImageButton
+        android:id="@+id/btnFilter"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_searching_filter"
+        app:layout_constraintBottom_toBottomOf="@+id/searchCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/searchCard"
+        app:tint="@color/white" />
+
+    <!-- 6. Banner Quảng cáo -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardBanner"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchCard">
+
+        <ImageView
+            android:id="@+id/ivBanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/qc" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- 7. Brands Section -->
+    <TextView
+        android:id="@+id/tvProducts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Thương hiệu"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardBanner" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrollBrands"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@+id/tvProducts">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Style này bạn nên để padding để logo không bị sát viền -->
+            <ImageButton android:id="@+id/brandXiaomi" style="@style/BrandButtonStyle" android:src="@drawable/xiaomi" android:padding="8dp"/>
+            <ImageButton android:id="@+id/brandApple" style="@style/BrandButtonStyle" android:src="@drawable/apple" android:padding="8dp"/>
+            <ImageButton android:id="@+id/brandSamsung" style="@style/BrandButtonStyle" android:src="@drawable/samsung" android:padding="8dp"/>
+            <ImageButton android:id="@+id/brandHonor" style="@style/BrandButtonStyle" android:src="@drawable/honor" android:padding="8dp"/>
+            <ImageButton android:id="@+id/brandOppo" style="@style/BrandButtonStyle" android:src="@drawable/oppo" android:padding="8dp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- 8. Products Section -->
+    <TextView
+        android:id="@+id/tvProductsHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Sản phẩm mới"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollBrands" />
+
+    <GridView
+        android:id="@+id/gvProducts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:numColumns="2"
+        android:verticalSpacing="12dp"
+        android:horizontalSpacing="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvProductsHeading" />
+
+    <!-- 9. Bottom Navigation (Màu đỏ cho item active) -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemIconTint="#D32F2F"
+        app:itemTextColor="#D32F2F"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
